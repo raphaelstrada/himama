@@ -32,10 +32,10 @@ const Index = ({ children, loading }) => {
         }    
       ]}
     />
-    <Grid padded verticalAlign="middle" columns={1} centered style={{height: '100vh'}}>
+    <Grid  verticalAlign="middle" columns={1} centered style={{height: '100vh'}}>
       <Grid.Row>
         <Grid.Column width={16} textAlign="center" verticalAlign="middle">
-          <Segment style={{ minWidth: "350px", maxWidth: "500px", margin:"auto" }}  align="center">
+          <Segment style={{ minWidth: "30px", maxWidth: "500px", margin:"auto" }}  align="center">
             <Container style={{display: "flex", flexDirection: "row"}}>
                 <div style={{flex: "0 0 160",textAlign: "left",}}>
                     <div style={{display: "flex", flexDirection: "column"}}>
