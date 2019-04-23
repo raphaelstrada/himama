@@ -17,8 +17,8 @@ class Clock extends PureComponent {
   constructor (props){
     super(props);
     this.state = {
-        timesFrom: ["15-04-2019 12:31 am", "16-04-2019 12:32 am", "17-04-2019 12:33 am", "18-04-2019 12:34", "19-04-2019 12:35"],
-        timesTo: ["15-04-2019 09:01", "16-04-2019 09:02", "17-04-2019 09:03", "18-04-2019 09:04", "19-04-2019 09:05"],
+        //timesFrom: ["15-04-2019 12:31 am", "16-04-2019 12:32 am", "17-04-2019 12:33 am", "18-04-2019 12:34", "19-04-2019 12:35"],
+        //timesTo: ["15-04-2019 09:01", "16-04-2019 09:02", "17-04-2019 09:03", "18-04-2019 09:04", "19-04-2019 09:05"],
         modalOpacity: "modal-is-visible",
         shifts: {}
     }
@@ -57,11 +57,11 @@ class Clock extends PureComponent {
     //console.log(name, value, index, type)
     if (type === "from"){
         this.setState({
-            timesFrom: { ...this.state.timesFrom, [index]: value }
+            //timesFrom: { ...this.state.timesFrom, [index]: value }
         });
     }else{
         this.setState({
-            timesTo: { ...this.state.timesTo, [index]: value }
+            //timesTo: { ...this.state.timesTo, [index]: value }
         });
     }
     
@@ -69,7 +69,7 @@ class Clock extends PureComponent {
 
   render () {
     const fieldsArray = [];
-    const { timesFrom, timesTo , modalOpacity, shifts } = this.state;
+    const { modalOpacity, shifts } = this.state;
     
 
     
@@ -77,8 +77,8 @@ class Clock extends PureComponent {
 
     Object.keys(shifts).map(key =>{
         fieldsArray.push(
-            <Table.Row key={key}>
-                <Table.Cell collapsing><Image src={shifts[key].snapshot_blob_from} size="mini"/></Table.Cell>
+            <Table.Row key={key} style={{ minWidth: "300px", maxWidth: "500px", margin:"auto" }}>
+                <Table.Cell><Image src={shifts[key].snapshot_blob_from} size="mini"/></Table.Cell>
                 <Table.Cell>
                     <DateTimeInput
                     name={"timesFrom"+key}
@@ -90,9 +90,10 @@ class Clock extends PureComponent {
                     type="from"
                     timeFormat="ampm"
                     closable={true}
+                    style={{ minWidth: "50px", maxWidth: "150px", margin:"auto" }}
                     />
                 </Table.Cell>
-                <Table.Cell collapsing><Image src={shifts[key].snapshot_blob_to} size="mini"/></Table.Cell>
+                <Table.Cell><Image src={shifts[key].snapshot_blob_to} size="mini"/></Table.Cell>
                 <Table.Cell>
                     <DateTimeInput
                     name={"timesTo"+key}
@@ -104,6 +105,7 @@ class Clock extends PureComponent {
                     type="to"
                     timeFormat="ampm"
                     closable={true}
+                    style={{ minWidth: "50px", maxWidth: "150px", margin:"auto" }}
                     />
                 </Table.Cell>
                 <Table.Cell><Icon name="delete"/></Table.Cell>
@@ -112,10 +114,10 @@ class Clock extends PureComponent {
     });
     return (
         <HimamaContainer >
-            <HimamaModalOverlay className={modalOpacity} onClick={() => { this.props.history.goBack() }}/>
-            <HimamaModal className={modalOpacity} style={{ overflowY: "scroll"}}>
+            <HimamaModalOverlay style={{}} className={modalOpacity} onClick={() => { this.props.history.goBack() }}/>
+            <HimamaModal className={modalOpacity} style={{ maxWidth: "515px", minWidth: "415px", overflowY: "scroll"}}>
 
-                    <Table striped={true} unstackable={true} >
+                    <Table striped={true} unstackable={false} >
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell colSpan='6'>Clock-in and out list</Table.HeaderCell>
