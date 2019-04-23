@@ -4,6 +4,8 @@
 daycare center. When a teacher arrives to work, they clock-in, when leave they clock-out, and
 the platform keeps track of these events.
 
+<img src="https://i.imgur.com/uWgF1ey.jpg" alt="Main Page" height="480"/>
+
 ## Key Features
 
 #### Rails API
