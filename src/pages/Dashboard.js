@@ -78,7 +78,7 @@ class Clock extends PureComponent {
     Object.keys(shifts).map(key =>{
         fieldsArray.push(
             <Table.Row key={key}>
-                <Table.Cell collapsing><Image src={img} size="mini"/></Table.Cell>
+                <Table.Cell collapsing><Image src={shifts[key].snapshot_blob_from} size="mini"/></Table.Cell>
                 <Table.Cell>
                     <DateTimeInput
                     name={"timesFrom"+key}
@@ -92,7 +92,7 @@ class Clock extends PureComponent {
                     closable={true}
                     />
                 </Table.Cell>
-                <Table.Cell collapsing><Image src={img} size="mini"/></Table.Cell>
+                <Table.Cell collapsing><Image src={shifts[key].snapshot_blob_to} size="mini"/></Table.Cell>
                 <Table.Cell>
                     <DateTimeInput
                     name={"timesTo"+key}
