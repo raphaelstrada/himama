@@ -70,9 +70,9 @@ class Home extends PureComponent {
     const { history } = this.props;
     const response = await API.post(route_api, employee)
       .then(response => {
-          console.log("success", response.data);
-          console.log("event_props", this.props);
-          console.log("event_state", this.state);
+          //console.log("success", response.data);
+          //console.log("event_props", this.props);
+          //console.log("event_state", this.state);
           
           this.setState({
               lists: response.data,

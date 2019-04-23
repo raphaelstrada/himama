@@ -42,7 +42,7 @@ class Clock extends PureComponent {
     const { history } = this.props;
     const response = await API.get(route_api, route)
       .then(response => {
-        console.log("getEmployee", response)  
+        //console.log("getEmployee", response)  
           this.setState({
               shifts: response.data,
           });
