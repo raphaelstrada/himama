@@ -104,7 +104,6 @@ class Home extends PureComponent {
       home: home,
       loading:false
     })
-    
   }
   
    

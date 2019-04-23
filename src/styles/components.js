@@ -55,7 +55,6 @@ export const HimamaModalOverlay = styled.div`
     }
 `
 export const HimamaModal = styled.div`
-    border-radius: 10px;
     display: none;
     max-height: calc(100% - 100px);
     position: fixed;
@@ -65,7 +64,6 @@ export const HimamaModal = styled.div`
       bottom: auto;
     transform: translate(-50%, -50%);
     z-index: 990;
-
     &.modal-is-visible {
       display: block;
       z-index: 1010;

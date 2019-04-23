@@ -52,7 +52,7 @@ class Clock extends PureComponent {
         //console.log("getEmployee", response)  
           this.setState({
               employee: response.data,
-          }, history.push({ pathname: route + response.data.uid }))
+          }, history.push({ pathname: route  }))
           this.hideLoading();
       })
       .catch(error => {

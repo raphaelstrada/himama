@@ -8,6 +8,7 @@ import {
     DateTimeInput,
   } from 'semantic-ui-calendar-react';
 import Moment from 'react-moment';
+import API from '../api';
 
 
 
@@ -18,16 +19,38 @@ class Clock extends PureComponent {
     this.state = {
         timesFrom: ["15-04-2019 12:31 am", "16-04-2019 12:32 am", "17-04-2019 12:33 am", "18-04-2019 12:34", "19-04-2019 12:35"],
         timesTo: ["15-04-2019 09:01", "16-04-2019 09:02", "17-04-2019 09:03", "18-04-2019 09:04", "19-04-2019 09:05"],
-        modalOpacity: "modal-is-visible"
-
+        modalOpacity: "modal-is-visible",
+        shifts: {}
     }
   }
 
-  handleChange2(i, e) {
-    //console.log([i], e)
-    // this.setState({
-    //     timesFrom: { ...this.state.timesFrom, [i]: e.target.value }
-    // });
+  showLoading = () => {this.setState({ loading:true })}
+  hideLoading = () => {this.setState({ loading:false })}
+
+  componentDidMount() {
+    this.showLoading();
+    const { match } = this.props;
+    this.setState({ 
+      route_api: `schools/${match.params.school_id}/employees/${match.params.employee_id}/shifts`,
+      route: '',
+    }, this.getShifts);
+    
+  }
+
+  getShifts = async event => {
+    const { route_api, route } = this.state;
+    const { history } = this.props;
+    const response = await API.get(route_api)
+      .then(response => {
+        console.log("getEmployee", response)  
+          this.setState({
+              shifts: response.data,
+          });
+          this.hideLoading();
+      })
+      .catch(error => {
+        history.push({ pathname: '/' });        
+      })
   }
 
   handleChange = (event, {name, value, index, type}) => {
@@ -46,19 +69,23 @@ class Clock extends PureComponent {
 
   render () {
     const fieldsArray = [];
-    const { timesFrom, timesTo , modalOpacity } = this.state;
-    for (var i = 0; i <= 4; i++) {
+    const { timesFrom, timesTo , modalOpacity, shifts } = this.state;
+    
+
+    
+
+
+    Object.keys(shifts).map(key =>{
         fieldsArray.push(
-            <Table.Row key={i}>
+            <Table.Row key={key}>
                 <Table.Cell collapsing><Image src={img} size="mini"/></Table.Cell>
                 <Table.Cell>
-                    <Moment diff="2018-04-19T09:59" unit="minutes">2018-04-19T13:22-0500</Moment>
                     <DateTimeInput
-                    name={"timesFrom"+i}
+                    name={"timesFrom"+key}
                     placeholder="Date Time"
-                    value={timesFrom[i]}
+                    value={shifts[key].worked_from}
                     iconPosition="left"
-                    index={i}
+                    index={key}
                     onChange={this.handleChange}
                     type="from"
                     timeFormat="ampm"
@@ -68,11 +95,11 @@ class Clock extends PureComponent {
                 <Table.Cell collapsing><Image src={img} size="mini"/></Table.Cell>
                 <Table.Cell>
                     <DateTimeInput
-                    name={"timesTo"+i}
+                    name={"timesTo"+key}
                     placeholder="Date Time"
-                    value={timesTo[i]}
+                    value={shifts[key].worked_to}
                     iconPosition="left"
-                    index={i}
+                    index={key}
                     onChange={this.handleChange}
                     type="to"
                     timeFormat="ampm"
@@ -82,13 +109,12 @@ class Clock extends PureComponent {
                 <Table.Cell><Icon name="delete"/></Table.Cell>
             </Table.Row>
         );
-    }
+    });
     return (
         <HimamaContainer >
             <HimamaModalOverlay className={modalOpacity}/>
-            <HimamaModal className={modalOpacity} style={{}}>
-                <Segment>
-                    <span style={{ fontFamily: 'Open Sans', display: "block", color:"#FFFFFF", fontWeight: 600}}> Welcome </span>
+            <HimamaModal className={modalOpacity} style={{ overflowY: "scroll"}}>
+
                     <Table striped={true} unstackable={true} >
                         <Table.Header>
                             <Table.Row>
@@ -99,7 +125,7 @@ class Clock extends PureComponent {
                          {fieldsArray}
                         </Table.Body>
                     </Table>
-                </Segment> 
+
             </HimamaModal>
         </HimamaContainer >
     )
