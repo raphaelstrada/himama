@@ -2,7 +2,7 @@
   "name": "himama",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "https://ckinout.herokuapp.com/",
   "dependencies": {
     "axios": "^0.18.0",
     "b64-to-blob": "^1.2.19",

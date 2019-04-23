@@ -1,18 +1,11 @@
 import React, { PureComponent } from 'react'
-import { Link } from 'react-router-dom'
-import Webcam from "react-webcam";
 import {HimamaModalOverlay, 
   HimamaModal, 
-  HimamaContainer, 
-  HimamaWelcome, 
-  HimamaSection} from '../styles/components';
-import { Segment, Icon, Table, Header, Image } from 'semantic-ui-react';
+  HimamaContainer} from '../styles/components';
+import { Segment, Icon, Table, Image } from 'semantic-ui-react';
 import img from '../assets/uploads/6825.jpg'
 import {
-    DateInput,
-    TimeInput,
     DateTimeInput,
-    DatesRangeInput
   } from 'semantic-ui-calendar-react';
 import Moment from 'react-moment';
 
@@ -84,7 +77,6 @@ class Clock extends PureComponent {
                     type="to"
                     timeFormat="ampm"
                     closable={true}
-                    icon={img}
                     />
                 </Table.Cell>
                 <Table.Cell><Icon name="delete"/></Table.Cell>

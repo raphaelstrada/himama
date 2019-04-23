@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Background, HeaderHimama } from '../styles/components'
+import { Background } from '../styles/components'
 import Loading from '../components/Loading'
 import GoogleFontLoader from 'react-google-font-loader';
-import { Container, Icon, Grid, Image, Segment } from 'semantic-ui-react';
+import { Container, Grid, Segment } from 'semantic-ui-react';
 import logo from '../assets/horizontal-logo.png'
 import Moment from 'react-moment'
 

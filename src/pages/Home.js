@@ -1,8 +1,5 @@
 import React, { PureComponent } from 'react'
-import { withRouter } from 'react-router-dom'
-import styled, { keyframes } from 'styled-components'
 import LabelForm from '../components/LabelForm'
-import axios from 'axios';
 import API from '../api';
 import {HimamaContainer, NumpadUl, NumpadInput, NumpadLi} from '../styles/components';
 import Loading from '../components/Loading'
@@ -37,7 +34,7 @@ class Home extends PureComponent {
   hideLoading = () => {this.setState({ loading:false })}
   
   uidCheck = () => {
-    const { value, route, home, school_id } = this.state;
+    const { value, home, school_id } = this.state;
     const { match } = this.props;
 
     if(value.length >= 4){
@@ -109,16 +106,7 @@ class Home extends PureComponent {
     })
     
   }
-  render() {
-      return (
-          <div className="Lists-container">
-              Lists
-          </div>
-      )
-  }
-
-
-
+  
    
   render () {
     const { value, logInError, home, loading } = this.state;
@@ -137,8 +125,8 @@ class Home extends PureComponent {
             placeholder = { home ? "Enter your 4 Digits UID" : "Now use your password"}
             />
             <LabelForm 
-              errorMessage="Please check your UID employee number and try again. hint: 5113"
-              display={logInError}
+              errormessage={ home ? "Please check your UID employee number and try again. hint: 3757" : "Please check your UID employee number and try again. hint: 1234"}
+              showlabel={logInError}
               />
             <NumpadUl>
             <NumpadLi backgroundColor =  { buttonColor}  onClick={() => this.handleButtonPress(1)}>1</NumpadLi>

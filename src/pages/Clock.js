@@ -68,7 +68,7 @@ class Clock extends PureComponent {
   }
 
   routeClockOut = () => {
-    const { match, history } = this.props;
+    const { match } = this.props;
     const { value, employee } = this.state;
     this.setState({ 
       uid: value,
@@ -83,8 +83,8 @@ class Clock extends PureComponent {
   }
 
   routeClockIn = () => {
-    const { match, history } = this.props;
-    const { value, route } = this.state;
+    const { match } = this.props;
+    const { value } = this.state;
     
     this.setState({ 
       uid: value,
@@ -147,14 +147,13 @@ class Clock extends PureComponent {
  
   capture = () => {
     const { shift } = this.state;
-    let imageSrc = this.webcam.getScreenshot();
+    const imageSrc = this.webcam.getScreenshot();
     // const newShift = {...shift, uploads:imageSrc}
-    imageSrc = imageSrc.split(",", 2)[1]; 
+    const b64Data = imageSrc.split(",", 2)[1]; 
     
-    const b64Data = imageSrc;
     const blob = b64toBlob(b64Data, 'image/png');
 
-    this.setState({ shift: {...shift, uploads: blob} }, () => this.clock() );
+    this.setState({ imageSrc:imageSrc, modalOpacity: "modal-is-visible", shift: {...shift, uploads: blob} }, () => this.clock() );
     
     setTimeout(() => {
       this.setState({modalOpacity: "modal-is-invisible"});

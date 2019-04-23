@@ -35,12 +35,12 @@ export default class extends PureComponent {
 //   }
     
   render () {
-    const { display , errorMessage} = this.props;
+    const { showlabel , errormessage} = this.props;
     const WrapError = styled.div`
         width: 100%;
         height: 100%;
         z-index: 999;
-        display: ${display ? 'block' : 'none'}
+        display: ${showlabel ? 'block' : 'none'}
         animation: ${pulse} 1s ${({ theme: { easings } }) => easings.easeOutSine};
     `
     // const { visible } = this.props
@@ -50,9 +50,8 @@ export default class extends PureComponent {
             <Label  
                 basic color='red' 
                 pointing 
-                {...this.props}
                 >
-                { errorMessage }
+                { errormessage }
                 
             </Label>
         </WrapError>
