@@ -45,7 +45,7 @@ class Home extends PureComponent {
         this.setState({ 
           uid: value,
           route_api: 'employee_uid',
-          route: '/login/',
+          route: '/login',
           employee: {
             school_id: school_id,
             uid: value
@@ -54,7 +54,7 @@ class Home extends PureComponent {
       }else{
         this.setState({ 
           route_api: 'employee_login',
-          route: `/schools/${school_id}/employees/1/clock/`,
+          route: `/schools/${school_id}/employees`,
           employee: {
             school_id: school_id,
             uid: match.params.uid,
@@ -66,18 +66,18 @@ class Home extends PureComponent {
   }
 
   handleSubmit = async event => {
-    const { route_api, employee, route } = this.state;
+    const { route_api, employee, route, home } = this.state;
     const { history } = this.props;
     const response = await API.post(route_api, employee)
       .then(response => {
-          //console.log("success", response.data);
-          //console.log("event_props", this.props);
-          //console.log("event_state", this.state);
+          console.log("success", response.data);
+          console.log("event_props", this.props);
+          console.log("event_state", this.state);
           
           this.setState({
               lists: response.data,
               uid: response.data.uid
-          }, history.push({ pathname: route + response.data.uid }))
+          }, history.push({ pathname: home ? `${route}/${response.data.uid}` : `${route}/${response.data.id}/clock/${response.data.uid}`}))
           this.hideLoading();
       })
       .catch(error => {
@@ -124,7 +124,7 @@ class Home extends PureComponent {
             placeholder = { home ? "Enter your 4 Digits UID" : "Now use your password"}
             />
             <LabelForm 
-              errormessage={ home ? "Please check your UID employee number and try again. hint: 3757" : "Please check your UID employee number and try again. hint: 1234"}
+              errormessage={ home ? "Please check your UID employee number and try again. hint: 7441" : "Please check your UID employee number and try again. hint: 1234"}
               showlabel={logInError}
               />
             <NumpadUl>

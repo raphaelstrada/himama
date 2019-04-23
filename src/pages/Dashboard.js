@@ -40,7 +40,7 @@ class Clock extends PureComponent {
   getShifts = async event => {
     const { route_api, route } = this.state;
     const { history } = this.props;
-    const response = await API.get(route_api)
+    const response = await API.get(route_api, route)
       .then(response => {
         console.log("getEmployee", response)  
           this.setState({
@@ -112,7 +112,7 @@ class Clock extends PureComponent {
     });
     return (
         <HimamaContainer >
-            <HimamaModalOverlay className={modalOpacity}/>
+            <HimamaModalOverlay className={modalOpacity} onClick={() => { this.props.history.goBack() }}/>
             <HimamaModal className={modalOpacity} style={{ overflowY: "scroll"}}>
 
                     <Table striped={true} unstackable={true} >

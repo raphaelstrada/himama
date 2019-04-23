@@ -33,6 +33,7 @@ class Clock extends PureComponent {
 
   componentDidMount() {
     const { match } = this.props;
+    
     this.setState({ 
       route_api: `schools/${match.params.school_id}/employees/${match.params.employee_id}/`,
       route: '',
