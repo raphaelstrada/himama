@@ -10,7 +10,7 @@ the platform keeps track of these events.
 
 #### Rails API
 
-Ref: `[https://github.com/raphaelstrada/ckinout/]https://github.com/raphaelstrada/ckinout`
+Repo: `https://github.com/raphaelstrada/ckinout`
 
 ####  RSpec TDD
 
