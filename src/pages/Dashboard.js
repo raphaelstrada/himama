@@ -24,14 +24,14 @@ class Clock extends PureComponent {
   }
 
   handleChange2(i, e) {
-    console.log([i], e)
+    //console.log([i], e)
     // this.setState({
     //     timesFrom: { ...this.state.timesFrom, [i]: e.target.value }
     // });
   }
 
   handleChange = (event, {name, value, index, type}) => {
-    console.log(name, value, index, type)
+    //console.log(name, value, index, type)
     if (type === "from"){
         this.setState({
             timesFrom: { ...this.state.timesFrom, [index]: value }

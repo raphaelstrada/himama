@@ -38,7 +38,7 @@ class Home extends PureComponent {
     const { match } = this.props;
 
     if(value.length >= 4){
-      console.log("state?", this.state);
+      //console.log("state?", this.state);
       //loading
       this.showLoading();
       if(home){
@@ -70,9 +70,9 @@ class Home extends PureComponent {
     const { history } = this.props;
     const response = await API.post(route_api, employee)
       .then(response => {
-          console.log("success", response.data);
-          console.log("event_props", this.props);
-          console.log("event_state", this.state);
+          //console.log("success", response.data);
+          //console.log("event_props", this.props);
+          //console.log("event_state", this.state);
           
           this.setState({
               lists: response.data,
@@ -81,7 +81,7 @@ class Home extends PureComponent {
           this.hideLoading();
       })
       .catch(error => {
-        console.log("error", error)
+        //console.log("error", error)
         this.setState({ 
           logIn:true,
           logInError: true,
@@ -99,7 +99,7 @@ class Home extends PureComponent {
   componentDidMount() {
     const { history } = this.props;
     const home = (history.location.pathname.indexOf("login") < 0);
-    console.log("uri", home);
+    //console.log("uri", home);
     this.setState({ 
       home: home,
       loading:false

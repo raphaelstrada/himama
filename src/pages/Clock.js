@@ -49,7 +49,7 @@ class Clock extends PureComponent {
     const { history } = this.props;
     const response = await API.get(route_api, employee)
       .then(response => {
-        console.log("getEmployee", response)  
+        //console.log("getEmployee", response)  
           this.setState({
               employee: response.data,
           }, history.push({ pathname: route + response.data.uid }))
@@ -108,7 +108,7 @@ class Clock extends PureComponent {
     
     const config = { headers: { 'Content-Type': 'multipart/form-data' } };
     
-    console.log("adsasd", shift);
+    //console.log("adsasd", shift);
     const formData = new FormData();
 
     if(shift.action === 'clockin'){  
@@ -124,14 +124,14 @@ class Clock extends PureComponent {
 
     const response = await callApi(route_api, formData, config)
       .then(response => {
-        console.log("response.data", response.data)
+        //console.log("response.data", response.data)
           this.setState({
               employee: response.data              
           },  history.push({pathname: route}) )
           this.hideLoading();
       })
       .catch(error => {
-        console.log("error", error)
+        //console.log("error", error)
         this.setState({ 
           logIn:true,
           logInError: true,

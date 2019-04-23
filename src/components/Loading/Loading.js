@@ -47,7 +47,7 @@ const PulsingBall = styled.div`
   height: 112px;
   border-radius: 100%;
   margin-top: 30px;
-  background: ${({ theme: { color } }) => color.pink};
+  background: ${({ theme: { color } }) => color.blue};
   animation: ${pulse} 1s ${({ theme: { easings } }) => easings.easeInOutSine} infinite;
 `
 
