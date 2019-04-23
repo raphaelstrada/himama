@@ -209,7 +209,7 @@ class Clock extends PureComponent {
                 
               </span>
             </div>
-            <div style={{flex: "1", textAlign: "center", paddingTop: "30px"}}>
+            <div style={{flex: "1", textAlign: "center", paddingTop: "10px"}}>
               
               
               <Button onClick={
