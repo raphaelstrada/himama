@@ -10,7 +10,7 @@ the platform keeps track of these events.
 
 #### Rails API
 
-Ref: `app/helpers/sign_up_form_builder.rb`
+Ref: `[https://github.com/raphaelstrada/ckinout/]https://github.com/raphaelstrada/ckinout`
 
 ####  RSpec TDD
 
