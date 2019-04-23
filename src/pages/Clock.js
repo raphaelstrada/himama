@@ -213,11 +213,11 @@ class Clock extends PureComponent {
               
               <Button onClick={
                   employee.clocked_in ? this.clockInAlert : this.handleClockIn
-              } positive size="massive"> Clock In 
+              } positive size="huge"> Clock In 
               </Button>
               <Button onClick={
                   !employee.clocked_in ? this.clockOutAlert : this.handleClockOut
-              } negative size="massive"> Clock Out </Button>
+              } negative size="huge"> Clock Out </Button>
               <Message
                 error
                 hidden = {hideClockInError}
